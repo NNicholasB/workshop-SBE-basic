@@ -4,7 +4,7 @@ import com.graciano.produtosapi.model.Produto;
 import com.graciano.produtosapi.repository.ProdutoRepository;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Optional;
+import java.util.List;
 import java.util.UUID;
 
 @RestController
@@ -43,4 +43,8 @@ public class ProdutoController {
         produtoRepository.save(produto);
     }
 
+    @GetMapping
+    public List<Produto> buscar(@RequestParam("nome")String nome){
+        return produtoRepository.findByNome(nome);
+    }
 }
